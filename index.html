@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Issue Report: Disk I/O Latency Spikes on SSDs</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+        header {
+            background: #333;
+            color: #fff;
+            padding-top: 10px;
+            min-height: 50px;
+            border-bottom: #ddd 3px solid;
+        }
+        header h1 {
+            text-align: center;
+            margin: 0;
+        }
+        h2 {
+            color: #333;
+            border-bottom: 2px solid #333;
+            padding-bottom: 5px;
+        }
+        section {
+            padding: 20px;
+            background: #fff;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        ul li {
+            background: #f9f9f9;
+            margin: 5px 0;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+        code {
+            background: #eee;
+            padding: 2px 4px;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Issue Report: Disk I/O Latency Spikes on SSDs</h1>
+        </div>
+    </header>
+
+    <div class="container">
+        <section>
+            <h2>Issue Summary</h2>
+            <p><strong>HSD No.:</strong> 4768392001</p>
+            <p><strong>Title:</strong> Unexpected Disk I/O Latency Spikes on SSDs Under Load</p>
+            <p><strong>Description:</strong> The system experiences significant disk I/O latency spikes when using SSDs under moderate load. These latency increases cause delays in reading/writing data, affecting overall system performance.</p>
+        </section>
+
+        <section>
+            <h2>Hardware Configuration</h2>
+            <ul>
+                <li><strong>Hardware Model:</strong> HP ProLiant DL380 Gen10</li>
+                <li><strong>Storage Device:</strong> Samsung PM883 960GB SSD</li>
+                <li><strong>Memory:</strong> 128 GB RAM</li>
+                <li><strong>CPU:</strong> Intel Xeon Silver 4214 (2x)</li>
+                <li><strong>Network Adapter:</strong> Mellanox ConnectX-4 25G Ethernet</li>
+                <li><strong>Firmware Version:</strong> 1.7.3</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Software Configuration</h2>
+            <ul>
+                <li><strong>Operating System:</strong> CentOS 8.4</li>
+                <li><strong>Kernel Version:</strong> 4.18.0-305.el8.x86_64</li>
+                <li><strong>File System:</strong> XFS</li>
+                <li><strong>Disk I/O Scheduler:</strong> <code>bfq</code></li>
+                <li><strong>Monitoring Tool:</strong> <code>iostat</code> 11.5</li>
+                <li><strong>Virtualization:</strong> None</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Steps to Reproduce</h2>
+            <ol>
+                <li>Install CentOS 8.4 on the HP ProLiant DL380 server.</li>
+                <li>Configure the Samsung PM883 SSD with the XFS file system.</li>
+                <li>Set the I/O scheduler to <code>bfq</code>.</li>
+                <li>Begin moderate read and write operations using <code>dd</code> or other disk I/O tools.</li>
+                <li>Monitor the latency with <code>iostat</code>.</li>
+            </ol>
+        </section>
+
+        <section>
+            <h2>Expected Result</h2>
+            <p>The disk I/O operations should maintain low latency, even under moderate load, without any significant spikes.</p>
+        </section>
+
+        <section>
+            <h2>Actual Result</h2>
+            <p>Latency spikes of up to 500ms occur during disk write operations, significantly affecting performance.</p>
+        </section>
+
+        <section>
+            <h2>Attached Files</h2>
+            <ul>
+                <li><a href="files/disk-io-stats.txt" download>Disk I/O Statistics</a></li>
+                <li><a href="files/system-logs.txt" download>System Logs</a></li>
+                <li><a href="files/iostat-output.txt" download>iostat Output</a></li>
+                <li><a href="files/reproduction-steps.txt" download>Steps to Reproduce</a></li>
+            </ul>
+        </section>
+    </div>
+</body>
+</html>
